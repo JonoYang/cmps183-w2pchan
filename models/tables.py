@@ -10,9 +10,11 @@ db.define_table('board',
 
 db.define_table('thread',
                 Field('title'),
-		Field('body', 'text'),
-		Field('date_created', 'datetime', default = datetime.utcnow(), readable=False, writable=False),
-		Field('board_id', db.board, readable=False, writable=False))
+                Field('body', 'text'),
+                Field('date_created', 'datetime', readable=False,
+                        writable=False, default = datetime.utcnow()),
+                Field('board_id', db.board, readable=False, 
+                        writable=False))
 
 db.define_table('post',
                 Field('author'),
@@ -20,4 +22,5 @@ db.define_table('post',
                         writable = False, default = datetime.utcnow()),
                 Field('body', 'text'),
                 Field('image', 'upload'),
-		        Field('thread_id', db.thread, readable = False, writable = False))
+		        Field('thread_id', db.thread, readable = False, 
+                        writable = False))

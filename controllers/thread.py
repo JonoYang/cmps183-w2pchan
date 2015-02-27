@@ -7,8 +7,6 @@ def new():
     form = SQLFORM(db.thread)
     if form.process().accepted:
         board_id = request.args(0)
-	
-	print board_id
-	db.thread.insert(board_id = board_id, title = form.vars.title, body = form.vars.body)
-	redirect(URL('thread', 'index', args=[form.vars.id]))
+        db.thread.insert(board_id = board_id, title = form.vars.title, body = form.vars.body)
+        redirect(URL('thread', 'index', args=[form.vars.id]))
     return dict(form = form)

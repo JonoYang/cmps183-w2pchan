@@ -1,8 +1,9 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
-<h1>**Name**</h1>
+<h1>{{=board_name}}</h1>
 
+{{=form}}
 {{if len(threads) > 0:}}
 
 <ul>
