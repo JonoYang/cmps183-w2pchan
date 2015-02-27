@@ -15,8 +15,9 @@ db.define_table('thread',
 		Field('board_id', db.board, readable=False, writable=False))
 
 db.define_table('post',
+                Field('author'),
+                Field('date_created', 'datetime', readable = False, 
+                        writable = False, default = datetime.utcnow()),
                 Field('body', 'text'),
-		Field('author'),
-		Field('date_created', 'datetime', default = datetime.utcnow()),
-		Field('image', 'upload'),
-		Field('thread_id', db.thread))
+                Field('image', 'upload'),
+		        Field('thread_id', db.thread, readable = False, writable = False))

@@ -7,7 +7,7 @@
 {{if len(posts) > 0:}}
 
 <ul>
-  {{for p in posts:}}
+  {{for p in reversed(posts):}}
     <li>{{=p.author}} says: {{=p.body}}</li>
   {{pass}}
 </ul>
@@ -15,3 +15,6 @@
 {{else:}}
   There are no posts in this thread
 {{pass}}
+
+{{=A('Make a post', _class = 'btn',
+        _href = URL('post', 'new', args = [thread.id]))}}
