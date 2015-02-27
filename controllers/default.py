@@ -10,16 +10,7 @@
 #########################################################################
 
 def index():
-    threads = db().select(orderby =~ db.thread.date_created)
-    return dict(threads = threads)
-
-def new_thread():
-    form = SQLFORM(db.post)
-    if form.process().accepted:
-        post_id = form.vars.id
-        db.thread.insert(posts = post_id, author = form.vars.author)
-        redirect(URL('default', 'index'))
-    return dict(form = form) 
+    return "default index." 
 
 def user():
     """
