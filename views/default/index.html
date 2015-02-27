@@ -1,0 +1,22 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+<h1>super alpha web2pychan</h1>
+
+<h2>threads and shit</h2>
+
+{{if len(threads) > 0:}}
+
+<ul>
+{{for t in threads:}}
+<li>Post by {{=t.author_ip}}, posted on {{=t.date_created}}</li>
+{{pass}}
+</ul>
+
+{{else:}}
+There are no posts.
+{{pass}}
+
+<p>
+{{=A('Make a thread', _class='btn', _href=URL('default', 'new_thread'))}}
+</p>
