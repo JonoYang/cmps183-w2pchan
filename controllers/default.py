@@ -10,7 +10,8 @@
 #########################################################################
 
 def index():
-    return "default index." 
+    boards = db().select(orderby =~ db.board.name) 
+    return dict(boards = boards)
 
 def user():
     """

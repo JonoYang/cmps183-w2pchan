@@ -1,19 +1,16 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
-<h1>super alpha web2pychan</h1>
+<h1>**thread name**</h1>
 
-<h2>boards and shit</h2>
-
-{{if len(boards) > 0:}}
+{{if len(posts) > 0:}}
 
 <ul>
-{{for b in boards:}}
-<li>{{=b.name}}</li>
+{{for p in posts:}}
+<li>{{=p.author}} says: {{=p.body}}</li>
 {{pass}}
 </ul>
 
 {{else:}}
-There are no posts.
+There are no posts in this thread
 {{pass}}
-
