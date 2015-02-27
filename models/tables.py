@@ -10,11 +10,12 @@ db.define_table('board',
 
 db.define_table('thread',
                 Field('title'),
-		Field('date_created', 'datetime', default = datetime.utcnow()),
-		Field('board_id', db.board))
+		Field('body', 'text'),
+		Field('date_created', 'datetime', default = datetime.utcnow(), readable=False, writable=False),
+		Field('board_id', db.board, readable=False, writable=False))
 
 db.define_table('post',
-                Field('body'),
+                Field('body', 'text'),
 		Field('author'),
 		Field('date_created', 'datetime', default = datetime.utcnow()),
 		Field('image', 'upload'),

@@ -1,16 +1,17 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
-<h1>**thread name**</h1>
+<h1>{{=thread.title}}</h1>
+<p><strong>{{=thread.body}}</strong></p>
 
 {{if len(posts) > 0:}}
 
 <ul>
-{{for p in posts:}}
-<li>{{=p.author}} says: {{=p.body}}</li>
-{{pass}}
+  {{for p in posts:}}
+    <li>{{=p.author}} says: {{=p.body}}</li>
+  {{pass}}
 </ul>
 
 {{else:}}
-There are no posts in this thread
+  There are no posts in this thread
 {{pass}}
