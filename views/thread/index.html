@@ -1,6 +1,9 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
+{{=A('Back to board', _class = 'btn',
+        _href = URL('board', 'index', args = [thread.board_id]))}}
+        
 <h1>{{=thread.title}}</h1>
 <p><strong>{{=thread.body}}</strong></p>
 
@@ -20,5 +23,5 @@
   There are no posts in this thread
 {{pass}}
 
-{{=A('Make a post', _class = 'btn',
-        _href = URL('post', 'new', args = [thread.id]))}}
+{{=A('Back to board', _class = 'btn',
+        _href = URL('board', 'index', args = [thread.board_id]))}}
