@@ -4,13 +4,17 @@
 <h1>{{=thread.title}}</h1>
 <p><strong>{{=thread.body}}</strong></p>
 
+{{=form}}
 {{if len(posts) > 0:}}
 
-<ul>
+
   {{for p in reversed(posts):}}
-    <li>{{=p.author}} says: {{=p.body}}</li>
+    {{if p.author == '':}}
+      <p>Anonymous says: {{=p.body}}</p>
+    {{else:}}
+      <p>{{=p.author}} says: {{=p.body}} <img src="{{=URL('download', args=p.image)}}"/></p>
+    {{pass}}
   {{pass}}
-</ul>
 
 {{else:}}
   There are no posts in this thread

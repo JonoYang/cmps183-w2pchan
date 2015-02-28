@@ -1,7 +1,14 @@
 def index():
-    posts = db(db.post.thread_id == request.args(0)).select(orderby =~ db.post.date_created)
+    thread_id = request.args(0)
+    posts = db(db.post.thread_id == thread_id).select(orderby =~ db.post.date_created)
     thread = db.thread[request.args(0)]
-    return dict(posts = posts, thread = thread)
+
+    form = SQLFORM(db.post)
+    if form.process().accepted:
+        db.post.insert(thread_id = thread_id, author = form.vars.author, 
+                        body = form.vars.body, image = form.vars.image)
+        redirect(URL('thread', 'index', args = [thread_id]))
+    return dict(posts = posts, thread = thread, form = form)
 
 def new():
     form = SQLFORM(db.thread)
