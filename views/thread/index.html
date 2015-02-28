@@ -10,9 +10,9 @@
 
   {{for p in reversed(posts):}}
     {{if p.author == '':}}
-      <p>Anonymous says: {{=p.body}} <img src="{{=URL('download', args=p.image)}}"/></p>
+      <p>Anonymous says: {{=p.body}} <img src="{{=URL('default', 'download', args=p.image)}}" width="150"/></p>
     {{else:}}
-      <p>{{=p.author}} says: {{=p.body}} <img src="{{=URL('download', args=p.image)}}"/></p>
+      <p>{{=p.author}} says: {{=p.body}} <img src="{{=URL('default', 'download', args=p.image)}}" width = "150"/></p>
     {{pass}}
   {{pass}}
 
