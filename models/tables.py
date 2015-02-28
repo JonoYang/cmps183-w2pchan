@@ -10,6 +10,8 @@ db.define_table('board',
 
 db.define_table('thread',
                 Field('title'),
+                Field('author'),
+                Field('image', 'upload'),
                 Field('body', 'text'),
                 Field('date_created', 'datetime', readable=False,
                         writable=False, default = datetime.utcnow()),
