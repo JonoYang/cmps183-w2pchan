@@ -1,7 +1,7 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
-<h1>**Name**</h1>
+<h1>{{=board.name}}</h1>
 
 {{if len(threads) > 0:}}
 
@@ -16,5 +16,5 @@ There are no threads
 {{pass}}
 
 <p>
-{{=A('Make a thread', _class='btn btn-lg', _href=URL('thread', 'new', args=[board_id]))}}
+{{=A('Make a thread', _class='btn btn-lg', _href=URL('thread', 'new', args=[board.id]))}}
 </p>
