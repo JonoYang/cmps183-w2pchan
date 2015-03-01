@@ -3,19 +3,34 @@
 
 {{=A('Back to board', _class = 'btn',
         _href = URL('board', 'index', args = [thread.board_id]))}}
-        
-<h1>{{=thread.title}}</h1>
-<p><strong>{{=thread.body}}</strong></p>
 
-{{=form}}
+{{=form}}        
+
+<h1>{{=thread.title}}</h1>
+<p>
+{{if thread.image:}}
+  <img src="{{=URL('default', 'download', args=thread.image)}}" width = "200"/>
+{{pass}}
+<strong>{{=thread.body}}</strong>
+</p>
+
+
 {{if len(posts) > 0:}}
 
 
   {{for p in reversed(posts):}}
     {{if p.author == '':}}
-      <p>Anonymous says: {{=p.body}} <img src="{{=URL('default', 'download', args=p.image)}}" width="150"/></p>
+      <p>
+      Anonymous says: {{=p.body}} 
+      {{if p.image:}}
+        <img src="{{=URL('default', 'download', args=p.image)}}" width="200"/>
+      {{pass}}
+      </p>
     {{else:}}
-      <p>{{=p.author}} says: {{=p.body}} <img src="{{=URL('default', 'download', args=p.image)}}" width = "150"/></p>
+      <p>{{=p.author}} says: {{=p.body}} 
+      {{if p.image:}}
+        <img src="{{=URL('default', 'download', args=p.image)}}" width = "200"/>
+      {{pass}}</p>
     {{pass}}
   {{pass}}
 

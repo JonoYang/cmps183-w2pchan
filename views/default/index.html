@@ -9,7 +9,7 @@
 
 <ul>
 {{for b in boards:}}
-<li>{{=b.name}}</li>
+  <li>{{=A(b.name, _href = URL('board', 'index', args = [b.id]))}}</li>
 {{pass}}
 </ul>
 
