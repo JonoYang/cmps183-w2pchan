@@ -21,16 +21,24 @@
   {{for p in reversed(posts):}}
     {{if p.author == '':}}
       <p>
-      Anonymous says: {{=p.body}} 
+      Anonymous:
+      </p>
+      <p>
       {{if p.image:}}
         <img src="{{=URL('default', 'download', args=p.image)}}" width="200"/>
       {{pass}}
+      {{=p.body}}
       </p>
     {{else:}}
-      <p>{{=p.author}} says: {{=p.body}} 
+      <p>
+      {{=p.author}}:
+      </p>
+      <p>  
       {{if p.image:}}
         <img src="{{=URL('default', 'download', args=p.image)}}" width = "200"/>
-      {{pass}}</p>
+      {{pass}}
+      {{=p.body}}
+      </p>
     {{pass}}
   {{pass}}
 
