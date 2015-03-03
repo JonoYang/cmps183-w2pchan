@@ -14,15 +14,11 @@
 <strong>{{=thread.body}}</strong>
 </p>
 
-
 {{if len(posts) > 0:}}
-
 
   {{for p in reversed(posts):}}
     {{if p.author == '':}}
-      <p>
-      Anonymous:
-      </p>
+      <p>Anonymous:</p>
       <p>
       {{if p.image:}}
         <img src="{{=URL('default', 'download', args=p.image)}}" width="200"/>
@@ -30,9 +26,7 @@
       {{=p.body}}
       </p>
     {{else:}}
-      <p>
-      {{=p.author}}:
-      </p>
+      <p>{{=p.author}}:</p>
       <p>  
       {{if p.image:}}
         <img src="{{=URL('default', 'download', args=p.image)}}" width = "200"/>
@@ -43,7 +37,7 @@
   {{pass}}
 
 {{else:}}
-  There are no posts in this thread
+  <p>There are no posts in this thread</p>
 {{pass}}
 
 {{=A('Back to board', _class = 'btn',

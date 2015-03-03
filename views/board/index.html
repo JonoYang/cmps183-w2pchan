@@ -6,7 +6,6 @@
 {{=form}}
 {{if len(threads) > 0:}}
 
-<a href="url">link text</a>
 <ul>
 {{for t in threads:}}
 <li>{{=A(t.title, _href=URL('thread', 'index', args=[t.id]))}}</li>
