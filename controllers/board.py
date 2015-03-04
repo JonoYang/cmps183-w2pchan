@@ -9,10 +9,13 @@ def index():
                         Field('body', 'text'),
                         table_name = 'thread')
     if form.process().accepted:
-        board_id = request.args(0)
-        db.thread.insert(author = form.vars.author, board_id = board_id,
-                            title = form.vars.title, image = form.vars.image,
-                            body = form.vars.body)
-        shit =  db(db.thread).select().last().id
-        redirect(URL('thread', 'index', args=[shit]))
+        if auth.user:
+            board_id = request.args(0)
+            db.thread.insert(author = form.vars.author, board_id = board_id,
+                                title = form.vars.title, image = form.vars.image,
+                                body = form.vars.body)
+            shit =  db(db.thread).select().last().id
+            redirect(URL('thread', 'index', args=[shit]))
+        else:
+            response.flash = 'Not logged in'
     return dict(threads = threads, board_id = board_id, board_name = board_name, form = form)
