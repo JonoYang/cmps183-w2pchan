@@ -32,3 +32,9 @@ db.define_table('post',
                         writable = False, default = datetime.utcnow()),
                 Field('body', 'text'),
                 Field('image', 'upload'))
+
+boards = db().select(orderby =~ db.board.name)
+
+for board in boards:
+    print board.name
+    response.menu.append( (T(board.name), False, URL('board', 'index', args = [board.id]), []) )
