@@ -15,3 +15,18 @@ def index():
         else:
             response.flash = 'Not logged in'
     return dict(posts = posts, thread = thread, form = form)
+
+@auth.requires_login()
+def delete():
+    thread = db.thread(request.args(0))
+    board_id = thread.board_id
+    confirm = ''
+    if thread.author_id != auth.user_id:
+        session.flash = 'Not authorized, BITCH'
+        redirect(URL('board', 'index', args = [board_id]))
+    else:
+        confirm = FORM.confirm('DO YOU WANT TO DELETE THIS, BITCH')
+        if confirm.accepted:
+            db(db.thread.id == thread.id).delete()
+            redirect(URL('board', 'index', args = [board_id]))
+    return dict(confirm = confirm)

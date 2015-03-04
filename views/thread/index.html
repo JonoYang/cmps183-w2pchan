@@ -12,6 +12,7 @@
   <img src="{{=URL('default', 'download', args=thread.image)}}" width = "200"/>
 {{pass}}
 <strong>{{=thread.body}}</strong>
+{{=A('Delete', _class = 'btn', _href = URL('thread', 'delete', args = [thread.id]))}}
 </p>
 
 {{if len(posts) > 0:}}
