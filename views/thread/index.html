@@ -24,6 +24,8 @@
         <img src="{{=URL('default', 'download', args=p.image)}}" width="200"/>
       {{pass}}
       {{=p.body}}
+      {{=A('Delete', _class = 'btn',
+        _href = URL('post', 'delete', args = [p.id]))}}
       </p>
     {{else:}}
       <p>{{=p.author}}:</p>
@@ -32,6 +34,8 @@
         <img src="{{=URL('default', 'download', args=p.image)}}" width = "200"/>
       {{pass}}
       {{=p.body}}
+      {{=A('Delete', _class = 'btn',
+        _href = URL('post', 'delete', args = [p.id]))}}
       </p>
     {{pass}}
   {{pass}}
