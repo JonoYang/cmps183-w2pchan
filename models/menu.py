@@ -5,8 +5,8 @@
 ## Customize your APP title, subtitle and menus here
 #########################################################################
 
-response.logo = A(B('w',SPAN(2),'pchan'),#XML('&trade;&nbsp;'),
-                  _class="brand",_href="http://www.web2py.com/")
+response.logo = A(B('w', SPAN(2), 'pchan'),#XML('&trade;&nbsp;'),
+                  _class="brand",_href=URL('default', 'index'))
 response.title = request.application.replace('_',' ').title()
 response.subtitle = ''
 
@@ -22,9 +22,9 @@ response.google_analytics_id = None
 ## this is the main application menu add/remove items as required
 #########################################################################
 
-response.menu = [
-    (T('Home'), False, URL('default', 'index'), [])
-]
+# response.menu = [
+#     (T('Home'), False, URL('default', 'index'), [])
+# ]
 
 DEVELOPMENT_MENU = True
 

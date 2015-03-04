@@ -36,5 +36,5 @@ db.define_table('post',
 boards = db().select(orderby =~ db.board.name)
 
 for board in boards:
-    print board.name
-    response.menu.append( (T(board.name), False, URL('board', 'index', args = [board.id]), []) )
+    response.menu.append((T(board.name), False, URL('board', 'index', 
+                            args = [board.id]), []))
