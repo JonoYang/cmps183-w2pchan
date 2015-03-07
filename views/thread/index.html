@@ -1,43 +1,71 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
+<link rel="stylesheet" type="text/css" href="/w2pchan/static/css/thread.css">
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".showpic").click(function(){
+      var imgWidth = $(this).css("width");
+      var imgHeight = $(this).css("height");
+      if (imgWidth == "200px") {
+        $(this).css("width", "75%");
+      } else {
+        $(this).css("width", "200px");
+      }
+    });
+    $(".form").toggle();
+    $(".toggle_form").click(function(){
+      $(".form").toggle();
+    });
+  });
+</script>
+
+
 {{=A('Back to board', _class = 'btn',
         _href = URL('board', 'index', args = [thread.board_id]))}}
 
+<button class = "toggle_form">fuck you</button>
+<div class = "form">
 {{=form}}        
+</div>
 
 <h1>{{=thread.title}}</h1>
+<div class="post">
 <p>
 {{if thread.image:}}
-  <img src="{{=URL('default', 'download', args=thread.image)}}" width = "200"/>
+  <img class = "showpic" src="{{=URL('default', 'download', args=thread.image)}}" width = "200"/>
 {{pass}}
 <strong>{{=thread.body}}</strong>
-{{=A('Delete', _class = 'btn', _href = URL('thread', 'delete', args = [thread.id]))}}
+{{=thread.date_created}} {{=A('Delete', _href = URL('thread', 'delete', args = [thread.id]))}}
 </p>
-
+</div>
 {{if len(posts) > 0:}}
 
   {{for p in reversed(posts):}}
     {{if p.author == '':}}
-      <p>Anonymous:</p>
+      <div class="post">
+      <p>Anonymous: {{=p.date_created}} {{=A('Delete', 
+        _href = URL('post', 'delete', args = [p.id]))}}</p>
       <p>
       {{if p.image:}}
-        <img src="{{=URL('default', 'download', args=p.image)}}" width="200"/>
+        <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="200"/>
       {{pass}}
       {{=p.body}}
-      {{=A('Delete', _class = 'btn',
-        _href = URL('post', 'delete', args = [p.id]))}}
       </p>
+      </div>
     {{else:}}
-      <p>{{=p.author}}:</p>
+      <div class="post">
+      <p>{{=p.author}}: {{=p.date_created}} {{=A('Delete', 
+        _href = URL('post', 'delete', args = [p.id]))}}</p>
       <p>  
       {{if p.image:}}
-        <img src="{{=URL('default', 'download', args=p.image)}}" width = "200"/>
+        <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width = "200"/>
       {{pass}}
       {{=p.body}}
-      {{=A('Delete', _class = 'btn',
-        _href = URL('post', 'delete', args = [p.id]))}}
+
       </p>
+      </div>
     {{pass}}
   {{pass}}
 
