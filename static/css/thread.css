@@ -1,6 +1,14 @@
+.toggle_form {
+    margin: 0 auto;
+}
+
+.form {
+    margin: 0 auto;;
+}
+
 .post {
 	border: 2px solid black;
-	width: 500px;
+	display: inline-block;
 	margin-top: 20px;
 	padding: 5px 5px 5px 5px;
 }

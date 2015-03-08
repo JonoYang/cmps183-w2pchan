@@ -8,70 +8,89 @@
     $(".showpic").click(function(){
       var imgWidth = $(this).css("width");
       var imgHeight = $(this).css("height");
-      if (imgWidth == "200px") {
+      if (imgWidth == "250px") {
         $(this).css("width", "75%");
       } else {
-        $(this).css("width", "200px");
+        $(this).css("width", "250px");
       }
     });
     $(".form").toggle();
     $(".toggle_form").click(function(){
       $(".form").toggle();
+      $(".toggle_form").toggle();
     });
   });
 </script>
 
+<h2><a class="toggle_form">Reply</a></h2>
+<div class = "form">{{=form}}</div>
 
-{{=A('Back to board', _class = 'btn',
+{{=A('Return', _class = 'btn',
         _href = URL('board', 'index', args = [thread.board_id]))}}
 
-<button class = "toggle_form">fuck you</button>
-<div class = "form">
-{{=form}}        
+<div class="op">
+  <p>
+    <strong>{{=thread.title}}</strong>
+    {{if thread.author == '':}}
+      {{=thread.author}}
+    {{else:}}
+      Anonymous
+    {{pass}}
+    {{=thread.date_created}}
+    {{=A('Delete', _href = URL('thread', 'delete', args = [thread.id]))}}
+  </p>
+  <p>
+    {{if thread.image:}}
+      <img class = "showpic" src="{{=URL('default', 'download', args=thread.image)}}" width = "250"/>
+    {{pass}}
+    {{=thread.body}}
+  </p>
 </div>
 
-<h1>{{=thread.title}}</h1>
-<div class="post">
-<p>
-{{if thread.image:}}
-  <img class = "showpic" src="{{=URL('default', 'download', args=thread.image)}}" width = "200"/>
-{{pass}}
-<strong>{{=thread.body}}</strong>
-{{=thread.date_created}} {{=A('Delete', _href = URL('thread', 'delete', args = [thread.id]))}}
-</p>
-</div>
 {{if len(posts) > 0:}}
-
   {{for p in reversed(posts):}}
     {{if p.author == '':}}
+
       <div class="post">
-      <p>Anonymous: {{=p.date_created}} {{=A('Delete', 
-        _href = URL('post', 'delete', args = [p.id]))}}</p>
-      <p>
-      {{if p.image:}}
-        <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="200"/>
-      {{pass}}
-      {{=p.body}}
-      </p>
+        <p>
+          Anonymous
+          {{=p.date_created}} 
+          {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
+        </p>
+        <p>
+          {{if p.image:}}
+            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="250"/>
+          {{pass}}
+          {{=p.body}}
+        </p>
       </div>
+
     {{else:}}
+
       <div class="post">
-      <p>{{=p.author}}: {{=p.date_created}} {{=A('Delete', 
-        _href = URL('post', 'delete', args = [p.id]))}}</p>
-      <p>  
-      {{if p.image:}}
-        <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width = "200"/>
-      {{pass}}
-      {{=p.body}}
-
-      </p>
+        <p>
+          {{=p.author}}
+          {{=p.date_created}}
+          {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
+        </p>
+        <p>  
+          {{if p.image:}}
+            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width = "250"/>
+          {{pass}}
+          {{=p.body}}
+        </p>
       </div>
-    {{pass}}
-  {{pass}}
 
+    {{pass}}
+
+    <br>
+
+  {{pass}}
 {{else:}}
+
   <p>There are no posts in this thread</p>
+
 {{pass}}
 
-{{=A('Back to board', _class = 'btn',
+{{=A('Return', _class = 'btn',
         _href = URL('board', 'index', args = [thread.board_id]))}}
