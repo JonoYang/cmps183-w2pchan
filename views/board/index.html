@@ -1,9 +1,29 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
+<link rel="stylesheet" type="text/css" href="/w2pchan/static/css/thread.css">
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".showpic").click(function(){
+      var imgWidth = $(this).css("width");
+      var imgHeight = $(this).css("height");
+      if (imgWidth == "250px") {
+        $(this).css("width", "75%");
+      } else {
+        $(this).css("width", "250px");
+      }
+    });
+    $(".form").toggle();
+    $(".toggle_form").click(function(){
+      $(".form").toggle();
+      $(".toggle_form").toggle();
+    });
+  });
+</script>
 
 <h1>{{=board_name}}</h1>
 
-{{=form}}
+<a class="toggle_form"><h3 style="text-align: center">[Post a Reply]</h3></a>
+<div class = "form">{{=form}}</div>
 {{if len(threads) > 0:}}
 
 <ul>
