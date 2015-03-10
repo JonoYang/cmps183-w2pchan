@@ -1,14 +1,22 @@
+.bg {
+	background-color: #E9F2F9;
+}
 .form table {
     margin: 0 auto;
 }
 
 .postbod {
-	clear: both;
+	clear: right;
 }
+
 .post {
 	background-color: #B2D1E5;
 	display: inline-block;
-	margin-top: 20px;
+	margin-top: 15px;
 	padding: 10px 10px 10px 10px;
 	box-shadow: 2px 2px 1px #888888;
+}
+
+.showpic {
+	margin: 5px 10px 5px 10px;
 }

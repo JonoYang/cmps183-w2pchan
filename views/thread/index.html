@@ -11,8 +11,10 @@
       var imgHeight = $(this).css("height");
       if (imgWidth == "250px") {
         $(this).css("width", "75%");
+        $(this).removeAttr("align");            
       } else {
         $(this).css("width", "250px");
+        $(this).attr("align", "left");   
       }
     });
     $(".form").toggle();
@@ -41,7 +43,7 @@
   </p>
   <p>
     {{if thread.image:}}
-      <img class = "showpic" src="{{=URL('default', 'download', args=thread.image)}}" width = "250"/>
+      <img class = "showpic" src="{{=URL('default', 'download', args=thread.image)}}" width = "250" align="left"/>
     {{pass}}
 
     {{=thread.body}}
@@ -59,13 +61,12 @@
           {{=p.date_created}} 
           {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
         </p>
-        <p>
           {{if p.image:}}
-            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="250"/>
+            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="250" align="left"/>
           {{pass}}
-        
-          {{=p.body}}
-
+          <p class="postbod">
+            {{=p.body}}
+          <p>
       </div>
 
     {{else:}}
@@ -78,11 +79,11 @@
         </p>
         <p>  
           {{if p.image:}}
-            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width = "250"/>
+            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width = "250" align="left"/>
           {{pass}}
-
+          <div class="postbod">
           {{=p.body}}
-
+          </div>
         </p>
       </div>
 
