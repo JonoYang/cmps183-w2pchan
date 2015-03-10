@@ -55,13 +55,12 @@
     {{=thread.date_created}}
     {{=A('Delete', _href = URL('thread', 'delete', args = [thread.id]))}}
   </p>
-  <p>
-    {{if thread.image:}}
-      <img class = "oppic" src="{{=URL('default', 'download', args=thread.image)}}" width = "250" align="left"/>
-    {{pass}}
 
+  {{if thread.image:}}
+    <img class = "oppic" src="{{=URL('default', 'download', args=thread.image)}}" width = "250" align="left"/>
+  {{pass}}
+  <p class="postbod">
     {{=thread.body}}
-
   </p>
 </div>
 

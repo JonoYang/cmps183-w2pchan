@@ -4,7 +4,8 @@ def index():
     board_id = request.args(0)
     board_name = db.board[board_id].name
     threads = db(db.thread.board_id == board_id).select(orderby =~ db.thread.date_updated)
-
+    posts = db(db.post).select()
+    print posts
     form = SQLFORM.factory(Field('title'),
                         Field('author'),
                         Field('image', 'upload', uploadfolder = 'applications/w2pchan/uploads'),
@@ -21,4 +22,4 @@ def index():
             redirect(URL('thread', 'index', args=[shit]))
         else:
             response.flash = 'Not logged in'
-    return dict(threads = threads, board_id = board_id, board_name = board_name, form = form)
+    return dict(threads = threads, board_id = board_id, board_name = board_name, form = form, posts = posts)
