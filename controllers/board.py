@@ -7,11 +7,12 @@ def index():
     rec_post = {}
     for t in threads:
         try:
-            posts = db(db.post.thread_id == t.id).select(orderby =~ db.thread.date_created, limitby=(0,3))
+            posts = db(db.post.thread_id == t.id).select(orderby =~ db.thread.date_created, limitby=(1,3))
             rec_post.update({t.id: posts})
         except KeyError:
-            posts = db(db.post.thread_id == t.id).select(orderby =~ db.thread.date_created, limitby=(0,3))
+            posts = db(db.post.thread_id == t.id).select(orderby =~ db.thread.date_created, limitby=(1,3))
             rec_post = {t.id: posts}
+
     form = SQLFORM.factory(Field('title'),
                         Field('author'),
                         Field('image', 'upload', uploadfolder = 'applications/w2pchan/uploads'),

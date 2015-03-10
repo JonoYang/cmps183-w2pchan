@@ -6,15 +6,30 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $(".showpic").click(function(){
+    $(".oppic").click(function(){
       var imgWidth = $(this).css("width");
       var imgHeight = $(this).css("height");
       if (imgWidth == "250px") {
         $(this).css("width", "75%");
+        $(this).removeAttr("align");            
       } else {
         $(this).css("width", "250px");
+        $(this).attr("align", "left");   
       }
     });
+
+    $(".showpic").click(function(){
+      var imgWidth = $(this).css("width");
+      var imgHeight = $(this).css("height");
+      if (imgWidth == "125px") {
+        $(this).css("width", "75%");
+        $(this).removeAttr("align");            
+      } else {
+        $(this).css("width", "125px");
+        $(this).attr("align", "left");   
+      }
+    });
+
     $(".form").toggle();
     $(".toggle_form").click(function(){
       $(".form").toggle();
@@ -43,14 +58,13 @@
     {{if t.image:}}
       <img class = "oppic" src="{{=URL('default', 'download', args=t.image)}}" width = "250" align="left"/>
     {{pass}}
-
-    {{=t.body}}
-
+    <p class="postbod">
+      {{=t.body}}
+    </p>
   </p>
 </div>
 <br>
-{{for p in rec_post[t.id]:}}
-
+{{for p in reversed(rec_post[t.id]):}}
   {{if p.post.author == '':}}
 
     <div class="post">
@@ -58,12 +72,12 @@
         Anonymous
         {{=p.post.date_created}}
       </p>
-        {{if p.post.image:}}
-          <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
-        {{pass}}
-        <p class="postbod">
-          {{=p.post.body}}
-        <p>
+      {{if p.post.image:}}
+        <img class="showpic" src="{{=URL('default', 'download', args=p.post.image)}}" width="125" align="left"/>
+      {{pass}}
+      <p class="postbod">
+        {{=p.post.body}}
+      <p>
     </div>
 
   {{else:}}
@@ -72,7 +86,6 @@
       <p>
         {{=p.post.author}}
         {{=p.post.date_created}}
-        {{=A('Delete', _href = URL('post', 'delete', args = [p.post.id]))}}
       </p>
       <p>  
         {{if p.post.image:}}
