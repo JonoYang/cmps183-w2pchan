@@ -23,7 +23,7 @@
   });
 </script>
 
-<a class="toggle_form"><h3 style="text-align: center">[Post a Reply]</h3></a>
+<a class="toggle_form"><h3 style="text-align: center">[Create a New Thread]</h3></a>
 <div class = "form">{{=form}}</div>
 {{if len(threads) > 0:}}
 
@@ -49,7 +49,46 @@
   </p>
 </div>
 <br>
-{{print posts[t.id]}}
+{{for p in rec_post[t.id]:}}
+
+  {{if p.post.author == '':}}
+
+    <div class="post">
+      <p>
+        Anonymous
+        {{=p.post.date_created}}
+      </p>
+        {{if p.post.image:}}
+          <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
+        {{pass}}
+        <p class="postbod">
+          {{=p.post.body}}
+        <p>
+    </div>
+
+  {{else:}}
+
+    <div class="post">
+      <p>
+        {{=p.post.author}}
+        {{=p.post.date_created}}
+        {{=A('Delete', _href = URL('post', 'delete', args = [p.post.id]))}}
+      </p>
+      <p>  
+        {{if p.post.image:}}
+          <img class="showpic" src="{{=URL('default', 'download', args=p.post.image)}}" width = "125" align="left"/>
+        {{pass}}
+        <div class="postbod">
+        {{=p.post.body}}
+        </div>
+      </p>
+    </div>
+
+  {{pass}}
+
+  <br>
+
+{{pass}}
 <hr>
 {{pass}}
 
