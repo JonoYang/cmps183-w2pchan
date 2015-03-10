@@ -6,7 +6,7 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $(".showpic").click(function(){
+    $(".oppic").click(function(){
       var imgWidth = $(this).css("width");
       var imgHeight = $(this).css("height");
       if (imgWidth == "250px") {
@@ -17,6 +17,19 @@
         $(this).attr("align", "left");   
       }
     });
+
+    $(".showpic").click(function(){
+      var imgWidth = $(this).css("width");
+      var imgHeight = $(this).css("height");
+      if (imgWidth == "125px") {
+        $(this).css("width", "75%");
+        $(this).removeAttr("align");            
+      } else {
+        $(this).css("width", "125px");
+        $(this).attr("align", "left");   
+      }
+    });
+
     $(".form").toggle();
     $(".toggle_form").click(function(){
       $(".form").toggle();
@@ -44,7 +57,7 @@
   </p>
   <p>
     {{if thread.image:}}
-      <img class = "showpic" src="{{=URL('default', 'download', args=thread.image)}}" width = "250" align="left"/>
+      <img class = "oppic" src="{{=URL('default', 'download', args=thread.image)}}" width = "250" align="left"/>
     {{pass}}
 
     {{=thread.body}}
@@ -63,7 +76,7 @@
           {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
         </p>
           {{if p.image:}}
-            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="250" align="left"/>
+            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
           {{pass}}
           <p class="postbod">
             {{=p.body}}
@@ -80,7 +93,7 @@
         </p>
         <p>  
           {{if p.image:}}
-            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width = "250" align="left"/>
+            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width = "125" align="left"/>
           {{pass}}
           <div class="postbod">
           {{=p.body}}
