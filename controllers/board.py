@@ -1,7 +1,9 @@
+from datetime import datetime
+
 def index():
     board_id = request.args(0)
     board_name = db.board[board_id].name
-    threads = db(db.thread.board_id == board_id).select(orderby =~ db.thread.date_created)
+    threads = db(db.thread.board_id == board_id).select(orderby =~ db.thread.date_updated)
 
     form = SQLFORM.factory(Field('title'),
                         Field('author'),
@@ -12,7 +14,8 @@ def index():
         if auth.user:
             board_id = request.args(0)
             db.thread.insert(author = form.vars.author, board_id = board_id,
-                                title = form.vars.title, image = form.vars.image,
+                                title = form.vars.title, date_updated = datetime.utcnow(),
+                                image = form.vars.image,
                                 body = form.vars.body)
             shit =  db(db.thread).select().last().id
             redirect(URL('thread', 'index', args=[shit]))

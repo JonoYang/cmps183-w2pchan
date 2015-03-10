@@ -1,3 +1,19 @@
+.bg {
+	background-color: #E9F2F9;
+}
+
 .form table {
     margin: 0 auto;
+}
+
+.op {
+	background-color: #B2D1E5;
+	display: inline-block;
+	margin-top: 15px;
+	padding: 10px 15px 10px 15px;
+	box-shadow: 2px 2px 1px #888888;
+}
+
+.oppic {
+	margin: 5px 10px 5px 10px;	
 }

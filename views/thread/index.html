@@ -106,10 +106,6 @@
     <br>
 
   {{pass}}
-{{else:}}
-
-  <p>There are no posts in this thread</p>
-
 {{pass}}
 <br>
-{{=A('[Return]', _href = URL('board', 'index', args = [thread.board_id]))}}
+<a href="{{=URL('board', 'index', args = [thread.board_id])}}" style = "clear: both;">[Return]</a>

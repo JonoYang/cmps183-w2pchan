@@ -1,6 +1,9 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{response.title=board_name}}
 {{extend 'layout.html'}}
-<link rel="stylesheet" type="text/css" href="/w2pchan/static/css/thread.css">
+
+<link rel="stylesheet" type="text/css" href="/w2pchan/static/css/board.css">
+
 <script type="text/javascript">
   $(document).ready(function(){
     $(".showpic").click(function(){
@@ -20,22 +23,40 @@
   });
 </script>
 
-<h1>{{=board_name}}</h1>
-
 <a class="toggle_form"><h3 style="text-align: center">[Post a Reply]</h3></a>
 <div class = "form">{{=form}}</div>
 {{if len(threads) > 0:}}
 
-<ul>
 {{for t in threads:}}
-<li>{{=A(t.title, _href=URL('thread', 'index', args=[t.id]))}}</li>
+<div class="op">
+  <p>
+    <strong>{{=t.title}}</strong>
+    {{if t.author == '':}}
+      {{=t.author}}
+    {{else:}}
+      Anonymous
+    {{pass}}
+    {{=t.date_created}}
+    {{=A('[Reply]', _href=URL('thread', 'index', args=[t.id]))}}
+  </p>
+  <p>
+    {{if t.image:}}
+      <img class = "oppic" src="{{=URL('default', 'download', args=t.image)}}" width = "250" align="left"/>
+    {{pass}}
+
+    {{=t.body}}
+
+  </p>
+</div>
+<br>
 {{pass}}
-</ul>
+
 
 {{else:}}
 There are no threads
 {{pass}}
 
-<p>
-{{=A('Return to board index', _class='btn btn-lg', _href=URL('default', 'index'))}}
-</p>
+<br>
+<br>
+{{=A('[Return to board index]', _href=URL('default', 'index'))}}
+

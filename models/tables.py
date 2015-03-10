@@ -17,7 +17,9 @@ db.define_table('thread',
                         writable = False, default = auth.user_id),
                 Field('author_ip', default = get_ip()),
                 Field('date_created', 'datetime', readable = False,
-                        writable = False, default = datetime.utcnow()),                
+                        writable = False, default = datetime.utcnow()),
+                Field('date_updated', 'datetime', readable = False,
+                        writable = False),                
                 Field('body', 'text'),
                 Field('image', 'upload'))
 
