@@ -63,7 +63,7 @@
     </p>
   </p>
 </div>
-<br>
+
 {{for p in rec_post[t.id]:}}
   {{if p.post.author == '':}}
 
@@ -99,7 +99,6 @@
 
   {{pass}}
 
-  <br>
 
 {{pass}}
 <hr>
@@ -110,7 +109,5 @@
 There are no threads
 {{pass}}
 
-<br>
-<br>
 {{=A('[Return to board index]', _href=URL('default', 'index'))}}
 

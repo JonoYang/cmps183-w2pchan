@@ -1,5 +1,11 @@
 .bg {
-	background-color: #E9F2F9;
+	background-color: #EEF2FF;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid #B7C5D9;
+	height: 0;
 }
 
 .form table {
@@ -14,14 +20,26 @@
 	margin: 5px 15px 5px 10px;	
 }
 
-.post {
+/*.post {
 	background-color: #B2D1E5;
 	display: inline-block;
 	margin-top: 15px;
 	padding: 10px 15px 10px 15px;
 	box-shadow: 2px 2px 1px #888888;
+}*/
+.post {
+	background-color: #D6DAF0;
+	border:1px solid #B7C5D9;
+	border-left: none;
+	border-top: none;
+	display: table;
+	padding: 5px;
+	margin-top: 5px;
 }
 
+div>hr {
+	clear:both;
+}
 .showpic {
 	margin: 5px 10px 5px 10px;
 }
