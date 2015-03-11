@@ -41,3 +41,17 @@ div>hr {
 .postbod {
   margin: 10px 20px 10px 20px;
 }
+
+.board-block {
+  border-style: solid;
+  border-size: 2px;
+  margin: 0px auto;
+  text-align: center;
+  display: inline-block;
+  height: 50px;
+  width: 150px;
+}
+
+.board-index-link {
+  color: black;
+}

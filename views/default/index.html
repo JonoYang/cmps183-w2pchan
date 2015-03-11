@@ -2,18 +2,13 @@
 {{response.title='super alpha web2pychan'}}
 {{extend 'layout.html'}}
 
-<style>
-.bg {
-	background-color: #E9F2F9;
-}
-</style>
 {{if len(boards) > 0:}}
 
-<ul>
 {{for b in boards:}}
-  <li>{{=A(b.name, _href = URL('board', 'index', args = [b.id]))}}</li>
+  <a class="board-index-link" href="/w2pchan/board/index/{{=b.id}}">
+    <div class="board-block">{{=b.name}}</div>
+  </a>
 {{pass}}
-</ul>
 
 {{else:}}
 There are no posts.
