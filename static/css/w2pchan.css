@@ -1,0 +1,43 @@
+.bg {
+  background-color: #EEF2FF;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #B7C5D9;
+  height: 0px;
+}
+
+.form table {
+  margin: 0 auto;
+}
+
+.op {
+  align: left;
+}
+
+.oppic {
+  margin: 5px 15px 5px 10px;
+}
+
+.post {
+  background-color: #D6DAF0;
+  border:1px solid #B7C5D9;
+  border-left: none;
+  border-top: none;
+  display: table;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+div>hr {
+  clear: both;
+} 
+
+.showpic {
+  margin: 5px 10px 5px 10px;
+}
+
+.postbod {
+  margin: 10px 20px 10px 20px;
+}
