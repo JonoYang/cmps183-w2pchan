@@ -13,10 +13,6 @@ def index():
     boards = db().select(orderby = db.board.id) 
     pics = []
 
-    # put pics in a list
-    for b in boards:
-      t = db(db.thread.id == b.id).select().first()
-      pics.append(t.image)
     return dict(boards = boards, pics = pics)
 
 def user():
