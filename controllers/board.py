@@ -6,12 +6,8 @@ def index():
     threads = db(db.thread.board_id == board_id).select(orderby =~ db.thread.date_updated)
     rec_post = {}
     for t in threads:
-        try:
-            posts = db(db.post.thread_id == t.id).select(orderby =~ db.thread.date_created, limitby=(0, 3))
-            rec_post.update({t.id: posts})
-        except KeyError:
-            posts = db(db.post.thread_id == t.id).select(orderby =~ db.thread.date_created, limitby=(0, 3))
-            rec_post = {t.id: posts}
+        posts = db(db.post.thread_id == t.id).select(orderby = db.post.date_created)
+        rec_post[t.id] = posts[-3:]
 
     form = SQLFORM.factory(Field('title'),
                         Field('author'),

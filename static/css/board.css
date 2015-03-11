@@ -33,13 +33,14 @@ hr {
 	border-left: none;
 	border-top: none;
 	display: table;
-	padding: 5px;
+	padding: 10px;
 	margin-top: 5px;
 }
 
 div>hr {
 	clear:both;
 }
+
 .showpic {
 	margin: 5px 10px 5px 10px;
 }

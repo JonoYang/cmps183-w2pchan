@@ -43,70 +43,46 @@
 {{if len(threads) > 0:}}
 
 {{for t in threads:}}
-<div class="op">
-  <p>
-    <strong>{{=t.title}}</strong>
-    {{if t.author == '':}}
-      {{=t.author}}
-    {{else:}}
-      Anonymous
-    {{pass}}
-    {{=t.date_created}}
-    {{=A('[Reply]', _href=URL('thread', 'index', args=[t.id]))}}
-  </p>
-  <p>
-    {{if t.image:}}
-      <img class = "oppic" src="{{=URL('default', 'download', args=t.image)}}" width = "250" align="left"/>
-    {{pass}}
-    <p class="postbod">
-      {{=t.body}}
-    </p>
-  </p>
-</div>
-
-{{for p in rec_post[t.id]:}}
-  {{if p.post.author == '':}}
-
-    <div class="post">
-      <p>
+  <div class="op">
+    <p>
+      <strong>{{=t.title}}</strong>
+      {{if t.author == '':}}
         Anonymous
-        {{=p.post.date_created}}
-      </p>
-      {{if p.post.image:}}
-        <img class="showpic" src="{{=URL('default', 'download', args=p.post.image)}}" width="125" align="left"/>
+      {{else:}}
+        {{=t.author}}
       {{pass}}
-      <p class="postbod">
-        {{=p.post.body}}
-      <p>
-    </div>
+      {{=t.date_created}}
+      {{=A('[Reply]', _href=URL('thread', 'index', args=[t.id]))}}
+    </p>
+    <p>
+      {{if t.image:}}
+        <img class = "oppic" src="{{=URL('default', 'download', args=t.image)}}" width = "250" align="left"/>
+      {{pass}}
+      <p class="postbod">{{=t.body}}</p>
+    </p>
+  </div>
 
-  {{else:}}
-
+  {{for p in rec_post[t.id]:}}
     <div class="post">
       <p>
-        {{=p.post.author}}
-        {{=p.post.date_created}}
-      </p>
-      <p>  
-        {{if p.post.image:}}
-          <img class="showpic" src="{{=URL('default', 'download', args=p.post.image)}}" width = "125" align="left"/>
+        {{if p.author == '':}}
+          Anonymous
+        {{else:}}
+          {{=p.author}}
         {{pass}}
-        <div class="postbod">
-        {{=p.post.body}}
-        </div>
+        {{=p.date_created}}
       </p>
+      {{if p.image:}}
+        <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
+      {{pass}}
+      <p class="postbod">{{=p.body}}</p>
     </div>
-
   {{pass}}
-
-
-{{pass}}
 <hr>
 {{pass}}
 
-
 {{else:}}
-There are no threads
+<p style="text-align: center;">There are no threads</p>
 {{pass}}
 
 {{=A('[Return to board index]', _href=URL('default', 'index'))}}
