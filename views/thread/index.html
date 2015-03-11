@@ -35,6 +35,7 @@
         <p>
           Anonymous
           {{=p.date_created}} 
+          id: {{=p.id}}
           {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
         </p>
           {{if p.image:}}
@@ -51,6 +52,7 @@
         <p>
           {{=p.author}}
           {{=p.date_created}}
+          id: {{=p.id}}
           {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
         </p>
         <p>  
@@ -70,4 +72,8 @@
   {{pass}}
 {{pass}}
 <br>
-<a href="{{=URL('board', 'index', args = [thread.board_id])}}" style = "clear: both;">[Return]</a>
+{{if len(posts) != 0:}}
+<p>
+  <a href="{{=URL('board', 'index', args = [thread.board_id])}}" style = "clear: both;">[Return]</a>
+</p>
+{{pass}}
