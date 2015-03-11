@@ -21,7 +21,7 @@ db.define_table('thread',
                 Field('date_updated', 'datetime', readable = False,
                         writable = False),                
                 Field('body', 'text'),
-                Field('image', 'upload'))
+                Field('image', 'upload', default = "lol"))
 
 db.define_table('post',
                 Field('thread_id', db.thread, readable = False, 

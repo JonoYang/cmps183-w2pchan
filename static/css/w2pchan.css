@@ -45,13 +45,17 @@ div>hr {
 .board-block {
   border-style: solid;
   border-size: 2px;
-  margin: 0px auto;
   text-align: center;
   display: inline-block;
-  height: 50px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
 }
 
 .board-index-link {
   color: black;
+}
+
+.board-index-pic {
+  height: 80%;
+  width: 80%;
 }
