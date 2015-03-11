@@ -11,7 +11,12 @@
 
 def index():
     boards = db().select(orderby = db.board.id) 
-    pics = []
+    pics = ["http://financeandcareer.com/wp-content/uploads/2013/03/webProgrammingInternship.jpg",
+            "http://www.freemake.com/blog/wp-content/uploads/2014/09/streaming-music.jpg",
+            "http://thumb7.shutterstock.com/display_pic_with_logo/700705/135069491/stock-vector-fitness-and-healthy-exercise-word-and-icon-cloud-135069491.jpg",
+            "http://images.anbmedia.com/articles/videogamereviews/icon.png",
+            "http://1.bp.blogspot.com/-qJA7dW3W-M0/VH4l2LQUIEI/AAAAAAAAACo/ZJqeqHgpmBs/s1600/books.png",
+            "http://www.shockmansion.com/wp-content/myimages/2013/05/Posted-On-Shock-Mansion1.jpg"]
 
     return dict(boards = boards, pics = pics)
 
