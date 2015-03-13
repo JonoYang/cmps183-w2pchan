@@ -42,7 +42,7 @@ audio {width:200px}
 /* Sticky footer begin */
 
 .main {
-  padding:20px 0 50px 0;
+  /*padding:20px 0 50px 0;*/
 }
 
 .footer,.push {
@@ -60,7 +60,7 @@ audio {width:200px}
 /* Sticky footer end */
 
 .footer {
-    border-top:1px #DEDEDE solid;
+    /*border-top:1px #DEDEDE solid;*/
 }
 .header {
 	/* background:<fill here for header image>; */

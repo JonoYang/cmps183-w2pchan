@@ -4,7 +4,7 @@
 
 <a class="toggle_form"><h3 style="text-align: center">[Create a New Thread]</h3></a>
 <div class = "form">{{=form}}</div>
-
+<hr>
 {{if len(threads) > 0:}}
   {{for t in threads:}}
     <div class="op">
@@ -44,6 +44,7 @@
   {{pass}}
 {{else:}}
   <p style="text-align: center;">There are no threads</p>
+  <hr>
 {{pass}}
 
 {{=A('[Return to board index]', _href=URL('default', 'index'))}}
