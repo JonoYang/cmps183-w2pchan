@@ -2,7 +2,6 @@
 {{response.title=board_name}}
 {{extend 'layout.html'}}
 
-
 <a class="toggle_form"><h3 style="text-align: center">[Post a Reply]</h3></a>
 <div class = "form">{{=form}}</div>
 
@@ -13,14 +12,13 @@
   <p>
     <strong>{{=thread.title}}</strong>
     {{if thread.author == '':}}
-      {{=thread.author}}
-    {{else:}}
       Anonymous
+    {{else:}}
+      {{=thread.author}}
     {{pass}}
     {{=thread.date_created}}
     {{=A('Delete', _href = URL('thread', 'delete', args = [thread.id]))}}
   </p>
-
   {{if thread.image:}}
     <img class = "oppic" src="{{=URL('default', 'download', args=thread.image)}}" width = "250" align="left"/>
   {{pass}}
@@ -28,52 +26,26 @@
 </div>
 
 {{if len(posts) > 0:}}
-  {{for p in reversed(posts):}}
-    {{if p.author == '':}}
-
-      <div class="post">
-        <p>
+  {{for p in posts:}}
+    <div class="post">
+      <p>
+        {{if p.author == '':}}
           Anonymous
-          {{=p.date_created}} 
-          id: {{=p.id}}
-          {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
-        </p>
-          {{if p.image:}}
-            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
-          {{pass}}
-          <p class="postbod">
-            {{=p.body}}
-          <p>
-      </div>
-
-    {{else:}}
-
-      <div class="post">
-        <p>
+        {{else:}}
           {{=p.author}}
-          {{=p.date_created}}
-          id: {{=p.id}}
-          {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
-        </p>
-        <p>  
-          {{if p.image:}}
-            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width = "125" align="left"/>
-          {{pass}}
-          <div class="postbod">
-          {{=p.body}}
-          </div>
-        </p>
-      </div>
-
-    {{pass}}
-
-    <br>
-
+        {{pass}}
+        {{=p.date_created}} 
+        id: {{=p.id}}
+        {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
+      </p>
+        {{if p.image:}}
+          <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
+        {{pass}}
+        <p class="postbod">{{=p.body}}</p>
+    </div>
   {{pass}}
 {{pass}}
 <br>
 {{if len(posts) != 0:}}
-<p>
-  <a href="{{=URL('board', 'index', args = [thread.board_id])}}" style = "clear: both;">[Return]</a>
-</p>
+  <p><a href="{{=URL('board', 'index', args = [thread.board_id])}}" style = "clear: both;">[Return]</a></p>
 {{pass}}

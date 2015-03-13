@@ -2,7 +2,7 @@ from datetime import datetime
 
 def index():
     thread_id = request.args(0)
-    posts = db(db.post.thread_id == thread_id).select(orderby =~ db.post.date_created)
+    posts = db(db.post.thread_id == thread_id).select(orderby = db.post.date_created)
     thread = db.thread[request.args(0)]
     board_name = db.board[thread.board_id].name
     form = SQLFORM.factory(Field('author'),
