@@ -2,14 +2,11 @@
 {{response.title=board_name}}
 {{extend 'layout.html'}}
 
-<hr style = "width: 50%; margin-left: auto; margin-right: auto;">
 <a class="toggle_form"><h3 style="text-align: center">[Post a Reply]</h3></a>
 <div class = "form">{{=form}}</div>
 
 {{=A('[Return]', _href = URL('board', 'index', args = [thread.board_id]))}}
 <hr>
-<br>
-<br>
 <div class="op">
   <p>
     <strong>{{=thread.title}}</strong>
