@@ -3,18 +3,18 @@
 {{extend 'layout.html'}}
 
 {{if len(boards) > 0:}}
-{{i = 0}}
-{{for b in boards:}}
-  <a class="board-index-link" href="/w2pchan/board/index/{{=b.id}}">
-    <div class="board-block">
-      <p>{{=b.name}}</p>
-      <img class="board-index-pic" src="{{=pics[i]}}" />
-    </div>
-  </a>
-{{i=i+1}}
-{{pass}}
-
+  {{i = 0}}
+  {{for b in boards:}}
+    <a class="board-index-link" href="/w2pchan/board/index/{{=b.id}}">
+      <div class="board-block">
+        <p>{{=b.name}}</p>
+         <img class="board-index-pic" src="{{=pics[i]}}" />
+     </div>
+    </a>
+    {{i=i+1}}
+  {{pass}}
 {{else:}}
-There are no posts.
+  <hr>
+  <p style="text-align: center;">There are no boards</p>
+  <hr>
 {{pass}}
-
