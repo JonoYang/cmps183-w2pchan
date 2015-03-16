@@ -9,6 +9,12 @@
 ## - api is an example of Hypermedia API support and access control
 #########################################################################
 
+# Steven Esser (sesser@ucsc.edu) 
+# Jonathan Yang (jyang37@ucsc.edu)
+#
+# default.py -- default controller for w2pchan application
+#            -- handles user login and landing page
+
 def index():
     boards = db().select(orderby = db.board.id) 
     pics = ["http://financeandcareer.com/wp-content/uploads/2013/03/webProgrammingInternship.jpg",
