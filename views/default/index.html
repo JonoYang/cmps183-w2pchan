@@ -18,3 +18,20 @@
   <p style="text-align: center;">There are no boards</p>
   <hr>
 {{pass}}
+
+{{for p in recent_posts:}}
+  <div class="post">
+    <p>
+      {{if p.author == '':}}
+        Anonymous
+      {{else:}}
+        {{=p.author}}
+      {{pass}}
+      {{=p.date_created}}
+    </p>
+    {{if p.image:}}
+      <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
+    {{pass}}
+    <p class="postbod">{{=p.body}}</p>
+  </div>
+{{pass}}

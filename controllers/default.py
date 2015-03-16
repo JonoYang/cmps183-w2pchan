@@ -17,8 +17,9 @@ def index():
             "http://images.anbmedia.com/articles/videogamereviews/icon.png",
             "http://1.bp.blogspot.com/-qJA7dW3W-M0/VH4l2LQUIEI/AAAAAAAAACo/ZJqeqHgpmBs/s1600/books.png",
             "http://www.shockmansion.com/wp-content/myimages/2013/05/Posted-On-Shock-Mansion1.jpg"]
-
-    return dict(boards = boards, pics = pics)
+    recent_posts = db(db.post).select(orderby =~ db.post.date_created)
+    recent_posts = recent_posts[:8]
+    return dict(boards = boards, pics = pics, recent_posts = recent_posts)
 
 def user():
     """
