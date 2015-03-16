@@ -1,22 +1,36 @@
+<!-- 
+    Steven Esser (sesser@ucsc.edu)
+    Jonathan Yang (jyang37@ucsc.edu)
+    /default/index.html/ 
+    The main landing page for w2pchan 
+                                     -->
+
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{response.title='super alpha web2pychan'}}
 {{extend 'layout.html'}}
 
 {{if len(boards) > 0:}}
-  {{i = 0}}
-  {{for b in boards:}}
-    <a class="board-index-link" href="/w2pchan/board/index/{{=b.id}}">
-      <div class="board-block">
-        <p>{{=b.name}}</p>
-         <img class="board-index-pic" src="{{=pics[i]}}" />
-     </div>
-    </a>
-    {{i=i+1}}
-  {{pass}}
+    {{i = 0}}
+  
+    <!-- iterate thru all the boards, displaying them -->
+    {{for b in boards:}}
+        <a class="board-index-link" href="/w2pchan/board/index/{{=b.id}}">
+            <div class="board-block">
+                <p>{{=b.name}}</p>
+                <img class="board-index-pic" src="{{=pics[i]}}" />
+            </div>
+        </a>
+        {{i=i+1}}
+    {{pass}}
+
 {{else:}}
-  <hr>
-  <p style="text-align: center;">There are no boards</p>
-  <hr>
+    <hr>
+    <p style="text-align: center;">
+
+        There are no boards
+
+    </p>
+    <hr>
 {{pass}}
 
 <!--
