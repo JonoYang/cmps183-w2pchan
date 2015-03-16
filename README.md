@@ -1,6 +1,8 @@
 # cmps183-w2pchan
 Final project: a futaba channel-like imageboard using web2py
 
+URL: [w2pchan](http://w2pchan.pythonanywhere.com)
+
 ## Team:
 - Jonathan Yang (jyang37@ucsc.edu)
 - Steven Esser (sesser@ucsc.edu)
@@ -16,6 +18,3 @@ subsequent posts in a thread do not have this requirement.
 Users can post text, images, or images and text in combination. 
 Each user's post is in response to a particular thread, or in 
 response to another post. 
-
-## Location:
-(http://w2pchan.pythonanywhere.com)
