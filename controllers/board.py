@@ -12,13 +12,17 @@ def index():
     else:
       min=0
       max=10
-
     # define the tuple limit by for db query
     limitby=(min,max)
 
     board_id = request.args(0)
     board_name = db.board[board_id].name
     threads = db(db.thread.board_id == board_id).select(orderby =~ db.thread.date_updated, limitby=limitby)
+    # determine max number of pages
+    num_threads = 0
+    for row in db(db.thread.board_id == board_id).select():
+      num_threads+=1 
+    max_pages = num_threads / 10
     rec_post = {}
     for t in threads:
         posts = db(db.post.thread_id == t.id).select(orderby = db.post.date_created)
@@ -43,4 +47,4 @@ def index():
                 redirect(URL('thread', 'index', args=[shit]))               
         else:
             response.flash = 'Not logged in'
-    return dict(threads = threads, board_id = board_id, board_name = board_name, form = form, rec_post = rec_post, page = page)
+    return dict(threads = threads, board_id = board_id, board_name = board_name, form = form, rec_post = rec_post, page = page, max_pages = max_pages)

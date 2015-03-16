@@ -46,9 +46,12 @@
   <p style="text-align: center;">There are no threads</p>
   <hr>
 {{pass}}
-{{if page != 0:}}
-  <a href="?page={{=page-1}}">previous</a>
-{{pass}}
-<a href="?page={{=page+1}}">next</a>
 {{=A('[Return to board index]', _href=URL('default', 'index'))}}
-
+<div class='nxt-prev'>
+  {{if page != 0:}}
+    <a class='prev-pg' href="?page={{=page-1}}"><button>previous</button></a>
+  {{pass}}
+  {{if page != max_pages:}}
+    <a class='nxt-pg' href="?page={{=page+1}}"><button>next</button></a>
+  {{pass}}
+</div>
