@@ -26,7 +26,7 @@ def index():
     rec_post = {}
     for t in threads:
         posts = db(db.post.thread_id == t.id).select(orderby = db.post.date_created)
-        rec_post[t.id] = posts[:3]
+        rec_post[t.id] = posts[-3:]
 
     form = SQLFORM.factory(Field('title'),
                         Field('author'),
