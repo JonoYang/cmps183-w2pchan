@@ -43,4 +43,4 @@ def index():
                 redirect(URL('thread', 'index', args=[shit]))               
         else:
             response.flash = 'Not logged in'
-    return dict(threads = threads, board_id = board_id, board_name = board_name, form = form, rec_post = rec_post)
+    return dict(threads = threads, board_id = board_id, board_name = board_name, form = form, rec_post = rec_post, page = page)
