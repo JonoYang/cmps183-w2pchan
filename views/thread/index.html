@@ -43,26 +43,31 @@
     
     <!-- display all the posts in a particular thread -->
     {{for p in posts:}}
-        <div class="post">
-            <p>
-                {{if p.author == '':}}
-                    Anonymous
-                {{else:}}
-                    {{=p.author}}
+        <div style="display: block;">
+            <div style="color: #B7C5D9; float: left;">
+                >>
+            </div>
+            
+            <div class="post">
+
+                <p>
+                    {{if p.author == '':}}
+                        Anonymous
+                    {{else:}}
+                        {{=p.author}}
+                    {{pass}}
+                    {{=p.date_created}}
+                </p>
+
+                {{if p.image:}}
+                    <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
                 {{pass}}
                 
-                {{=p.date_created}} 
-                id: {{=p.id}}
-                {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
-            </p>
-            {{if p.image:}}
-                <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
-            {{pass}}
+                <p class="postbod">
+                    {{=p.body}}
+                </p>
 
-            <p class="postbod">
-                {{=p.body}}
-            </p>
-
+            </div>
         </div>
     {{pass}}
 {{pass}}
