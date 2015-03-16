@@ -1,3 +1,11 @@
+<!-- 
+    Steven Esser (sesser@ucsc.edu)
+    Jonathan Yang (jyang37@ucsc.edu)
+
+    /thread/index.html/ 
+    The thead index page for w2pchan
+                                    -->
+
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{response.title=board_name}}
 {{extend 'layout.html'}}
@@ -7,45 +15,65 @@
 
 {{=A('[Return]', _href = URL('board', 'index', args = [thread.board_id]))}}
 <hr>
+
+<!-- show the original poster's (OP) thread -->
 <div class="op">
-  <p>
-    <strong>{{=thread.title}}</strong>
-    {{if thread.author == '':}}
-      Anonymous
-    {{else:}}
-      {{=thread.author}}
+    <p>
+        <strong>{{=thread.title}}</strong>
+        
+        {{if thread.author == '':}}
+            Anonymous
+        {{else:}}
+            {{=thread.author}}
+        {{pass}}
+
+        {{=thread.date_created}}
+        {{=A('Delete', _href = URL('thread', 'delete', args = [thread.id]))}}
+    </p>
+    {{if thread.image:}}
+        <img class = "oppic" src="{{=URL('default', 'download', args=thread.image)}}" width = "250" align="left"/>
     {{pass}}
-    {{=thread.date_created}}
-    {{=A('Delete', _href = URL('thread', 'delete', args = [thread.id]))}}
-  </p>
-  {{if thread.image:}}
-    <img class = "oppic" src="{{=URL('default', 'download', args=thread.image)}}" width = "250" align="left"/>
-  {{pass}}
-  <p class="postbod">{{=thread.body}}</p>
+  
+    <p class="postbod">
+        {{=thread.body}}
+    </p>
 </div>
 
 {{if len(posts) > 0:}}
-  {{for p in posts:}}
-    <div class="post">
-      <p>
-        {{if p.author == '':}}
-          Anonymous
-        {{else:}}
-          {{=p.author}}
-        {{pass}}
-        {{=p.date_created}} 
-        id: {{=p.id}}
-        {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
-      </p>
-        {{if p.image:}}
-          <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
-        {{pass}}
-        <p class="postbod">{{=p.body}}</p>
-    </div>
-  {{pass}}
+    
+    <!-- display all the posts in a particular thread -->
+    {{for p in posts:}}
+        <div class="post">
+            <p>
+                {{if p.author == '':}}
+                    Anonymous
+                {{else:}}
+                    {{=p.author}}
+                {{pass}}
+                
+                {{=p.date_created}} 
+                id: {{=p.id}}
+                {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
+            </p>
+            {{if p.image:}}
+                <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
+            {{pass}}
+
+            <p class="postbod">
+                {{=p.body}}
+            </p>
+
+        </div>
+    {{pass}}
 {{pass}}
+
 <br>
+
 {{if len(posts) != 0:}}
-  <hr>
-  <p><a href="{{=URL('board', 'index', args = [thread.board_id])}}" style = "clear: both;">[Return]</a></p>
+    <hr>
+    <p>
+        <a href="{{=URL('board', 'index', args = [thread.board_id])}}" style = "clear: both;">
+            [Return]
+        </a>
+    </p>
 {{pass}}

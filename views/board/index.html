@@ -1,71 +1,107 @@
+<!-- 
+    Steven Esser (sesser@ucsc.edu)
+    Jonathan Yang (jyang37@ucsc.edu)
+
+    /board/index.html/ 
+    The board index page for w2pchan 
+                                    -->
+
 {{left_sidebar_enabled, right_sidebar_enabled=False,('message' in globals())}}
 {{response.title=board_name}}
 {{extend 'layout.html'}}
 
+<!-- new thread form -->
 <a class="toggle_form"><h3 style="text-align: center">[Create a New Thread]</h3></a>
 <div class = "form">{{=form}}</div>
 <hr>
+
 {{if len(threads) > 0:}}
-  {{for t in threads:}}
-    <div class="op">
-      <p>
-        <strong>{{=t.title}}</strong>
-        {{if t.author == '':}}
-          Anonymous
-        {{else:}}
-          {{=t.author}}
-        {{pass}}
-        {{=t.date_created}}
-        {{=A('[Reply]', _href=URL('thread', 'index', args=[t.id]))}}
-      </p>
-      {{if t.image:}}
-        <img class = "oppic" src="{{=URL('default', 'download', args=t.image)}}" width = "250" align="left"/>
-      {{pass}}
-      <p class="postbod">{{=t.body}}</p>
-    </div>
-    {{if post_count[t.id] > 3:}}
-      <p style="color: #707070; font-size: 10">
-        {{=post_count[t.id] - 3}} 
-        {{if post_count[t.id] - 3 == 1:}}
-          post
-        {{else:}} 
-          posts
-        {{pass}}
-        omitted.
-        {{=A('Click here', _href=URL('thread', 'index', args=[t.id]))}} to view.
-      </p>
-    {{pass}}
-    {{for p in rec_post[t.id]:}}
-      <div style="display: block;">
-        <div style="color: #B7C5D9; float: left;">>></div>
-        <div class="post">
-          <p>
-            {{if p.author == '':}}
-              Anonymous
-            {{else:}}
-              {{=p.author}}
+
+    <!-- iterate thru all of the threads in a particular board -->
+    {{for t in threads:}}
+        <div class="op">
+            <p>
+                <strong>{{=t.title}}</strong>
+
+                {{if t.author == '':}}
+                    Anonymous
+                {{else:}}
+                    {{=t.author}}
+                {{pass}}
+
+                {{=t.date_created}}
+                {{=A('[Reply]', _href=URL('thread', 'index', args=[t.id]))}}
+            </p>
+            {{if t.image:}}
+                <img class = "oppic" src="{{=URL('default', 'download', args=t.image)}}" width = "250" align="left"/>
             {{pass}}
-            {{=p.date_created}}
-          </p>
-          {{if p.image:}}
-            <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
-          {{pass}}
-          <p class="postbod">{{=p.body}}</p>
+            <p class="postbod">
+                {{=t.body}}
+            </p>
         </div>
-      </div>
+
+        <!-- calculate the hidden posts in a particular thread -->
+        {{if post_count[t.id] > 3:}}
+            <p style="color: #707070; font-size: 10">
+                {{=post_count[t.id] - 3}} 
+                {{if post_count[t.id] - 3 == 1:}}
+                    post
+                {{else:}} 
+                    posts
+                {{pass}}
+                omitted.
+                {{=A('Click here', _href=URL('thread', 'index', args=[t.id]))}} to view.
+            </p>
+        {{pass}}
+
+        <!-- display the three most recent posts in a particular thread -->
+        {{for p in rec_post[t.id]:}}
+            <div style="display: block;">
+                <div style="color: #B7C5D9; float: left;">
+                    >>
+                </div>
+                
+                <div class="post">
+
+                    <p>
+                        {{if p.author == '':}}
+                            Anonymous
+                        {{else:}}
+                            {{=p.author}}
+                        {{pass}}
+                        {{=p.date_created}}
+                    </p>
+
+                    {{if p.image:}}
+                        <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
+                    {{pass}}
+                    
+                    <p class="postbod">
+                        {{=p.body}}
+                    </p>
+
+                </div>
+            </div>
+        {{pass}}
+    <hr>
     {{pass}}
-  <hr>
-  {{pass}}
+
 {{else:}}
-  <p style="text-align: center;">There are no threads</p>
-  <hr>
+    <p style="text-align: center;">
+        There are no threads
+    </p>
+    <hr>
 {{pass}}
+
 {{=A('[Return to board index]', _href=URL('default', 'index'))}}
+
+<!-- next and previous pagination buttons -->
 <div class='nxt-prev'>
-  {{if page != 0:}}
-    <a class='prev-pg' href="?page={{=page-1}}"><button>previous</button></a>
-  {{pass}}
-  {{if page != max_pages:}}
-    <a class='nxt-pg' href="?page={{=page+1}}"><button>next</button></a>
-  {{pass}}
+    {{if page != 0:}}
+        <a class='prev-pg' href="?page={{=page-1}}"><button>previous</button></a>
+    {{pass}}
+    
+    {{if page != max_pages:}}
+        <a class='nxt-pg' href="?page={{=page+1}}"><button>next</button></a>
+    {{pass}}
 </div>
