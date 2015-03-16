@@ -24,8 +24,10 @@ def index():
       num_threads+=1 
     max_pages = num_threads / 10
     rec_post = {}
+    post_count = {}
     for t in threads:
         posts = db(db.post.thread_id == t.id).select(orderby = db.post.date_created)
+        post_count[t.id] = len(posts)
         if len(posts) <= 3:
             rec_post[t.id] = posts[:3]
         else:
@@ -50,4 +52,4 @@ def index():
                 redirect(URL('thread', 'index', args=[shit]))               
         else:
             response.flash = 'Not logged in'
-    return dict(threads = threads, board_id = board_id, board_name = board_name, form = form, rec_post = rec_post, page = page, max_pages = max_pages)
+    return dict(threads = threads, board_id = board_id, board_name = board_name, form = form, rec_post = rec_post, page = page, max_pages = max_pages, post_count = post_count)
