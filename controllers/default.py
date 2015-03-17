@@ -25,6 +25,9 @@ def index():
             "http://www.shockmansion.com/wp-content/myimages/2013/05/Posted-On-Shock-Mansion1.jpg"]
     recent_posts = db(db.post).select(orderby =~ db.post.date_created)
     recent_posts = recent_posts[:8]
+    board_name = {}
+    for b in boards:
+        board_name[b.id] = b.name
     return dict(boards = boards, pics = pics, recent_posts = recent_posts)
 
 def user():

@@ -73,3 +73,15 @@ div>p>a {
 
 .prev-pg {
 }
+
+.landing {
+
+}
+
+.board_list {
+  float: left;
+}
+
+.recent_posts {
+  float: right;
+}
