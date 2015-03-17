@@ -95,3 +95,8 @@ div>p>a {
   border-style: none;
   float: right;
 }
+
+.author_name {
+  color: #117743;
+  font-weight: bold;
+}

@@ -49,13 +49,15 @@
                 <div class="post">
 
                     <p>
-                        {{if p.author == '':}}
-                            Anonymous
-                        {{else:}}
-                            {{=p.author}}
-                        {{pass}}
+                        <span class="author_name">
+                            {{if p.author == '':}}
+                                Anonymous
+                            {{else:}}
+                                {{=p.author}}
+                            {{pass}}
+                        </span>
                         {{=p.date_created}}
-                        {{=A('View thread', _href = URL('thread', 'index', args = [p.thread_id]))}}
+                        {{=A('[View]', _href = URL('thread', 'index', args = [p.thread_id]))}}
                     </p>
 
                     {{if p.image:}}

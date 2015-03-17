@@ -4,11 +4,13 @@
 
 <div class="post" style="margin-left: auto; margin-right: auto;">
   <p>
-    {{if post.author == '':}}
-      Anonymous
-    {{else:}}
-      {{=post.author}}
-    {{pass}}
+    <span class="author_name">
+        {{if post.author == '':}}
+            Anonymous
+        {{else:}}
+            {{=post.author}}
+        {{pass}}
+    </span>
     {{=post.date_created}}
   </p>
   {{if post.image:}}
@@ -16,6 +18,8 @@
   {{pass}}
   <p class="postbod">{{=post.body}}</p>
 </div>
+<br>
 
 {{=confirm}}
 {{=A('Cancel', _class='btn', _href=URL('thread', 'index', args=[thread_id]))}}
+

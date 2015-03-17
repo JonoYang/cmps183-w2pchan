@@ -22,12 +22,13 @@
         <div class="op">
             <p>
                 <strong>{{=t.title}}</strong>
-
-                {{if t.author == '':}}
-                    Anonymous
-                {{else:}}
-                    {{=t.author}}
-                {{pass}}
+                <span class="author_name">
+                    {{if t.author == '':}}
+                        Anonymous
+                    {{else:}}
+                        {{=t.author}}
+                    {{pass}}
+                </span>
 
                 {{=t.date_created}}
                 {{=A('[Reply]', _href=URL('thread', 'index', args=[t.id]))}}
@@ -64,11 +65,13 @@
                 <div class="post">
 
                     <p>
-                        {{if p.author == '':}}
-                            Anonymous
-                        {{else:}}
-                            {{=p.author}}
-                        {{pass}}
+                        <span class="author_name">
+                            {{if p.author == '':}}
+                                Anonymous
+                            {{else:}}
+                                {{=p.author}}
+                            {{pass}}
+                        </span>
                         {{=p.date_created}}
                     </p>
 

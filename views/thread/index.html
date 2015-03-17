@@ -21,11 +21,13 @@
     <p>
         <strong>{{=thread.title}}</strong>
         
-        {{if thread.author == '':}}
-            Anonymous
-        {{else:}}
-            {{=thread.author}}
-        {{pass}}
+        <span class="author_name">
+            {{if thread.author == '':}}
+                Anonymous
+            {{else:}}
+                {{=thread.author}}
+            {{pass}}
+        </span>
 
         {{=thread.date_created}}
         {{=A('Delete', _href = URL('thread', 'delete', args = [thread.id]))}}
@@ -51,12 +53,15 @@
             <div class="post">
 
                 <p>
-                    {{if p.author == '':}}
-                        Anonymous
-                    {{else:}}
-                        {{=p.author}}
-                    {{pass}}
+                    <span class="author_name">
+                        {{if p.author == '':}}
+                            Anonymous
+                        {{else:}}
+                            {{=p.author}}
+                        {{pass}}
+                    </span>
                     {{=p.date_created}}
+                    {{=A('Delete', _href = URL('post', 'delete', args = [p.id]))}}
                 </p>
 
                 {{if p.image:}}
