@@ -82,6 +82,10 @@ div>p>a {
   float: left;
 }
 
-.recent_posts {
-  float: right;
+.recent-posts {
+  margin: 0px auto;
+  text-align: none;
+  height:30%;
+  width: 30%;
+  border-style: none;
 }

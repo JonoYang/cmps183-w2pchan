@@ -35,9 +35,11 @@
             <hr>
         {{pass}}
     </div>
-    <div class="recent_posts">
-        <h4>Recent Posts</h4>
+    <div class='recent-posts' style="float: right;">
+        <h4>Recent Posts:</h4>
+        {{j = 0}}
         {{for p in recent_posts:}}
+            {{=name[j]}}:
             <div style="display: block;">
                 <div style="color: #B7C5D9; float: left;">
                     >>
@@ -65,6 +67,7 @@
 
                 </div>
             </div>
+        {{j+=1}}
         {{pass}}
     </div>
 </div>
