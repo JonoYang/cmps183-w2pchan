@@ -13,12 +13,12 @@ def index():
       # we are on a page, so determine which threads to show
       # ALSO, we are assuming page 1 is actually the next paginated page
       page = int(request.vars['page'])
-      min = page * 10 # set the next subset of threads 
-      max = min + 10
+      min = page * 5 # set the next subset of threads 
+      max = min + 5
     else:
       page = 0
       min=0
-      max=10
+      max=5
     
     # set the subset of threads 
     limitby=(min,max)
@@ -34,7 +34,7 @@ def index():
         num_threads+=1 
     
     # get max number of pages by dividing by the number of threads per page
-    max_pages = num_threads / 10
+    max_pages = num_threads / 5
 
     rec_post = {}
     post_count = {}
