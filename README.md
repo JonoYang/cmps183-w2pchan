@@ -1,5 +1,5 @@
 # cmps183-w2pchan
-Final project: a futaba channel-like imageboard using web2py
+Final project: a 4chan-like imageboard using web2py
 
 URL: [w2pchan](http://w2pchan.pythonanywhere.com)
 
