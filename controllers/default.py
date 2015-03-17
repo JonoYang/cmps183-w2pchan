@@ -24,7 +24,7 @@ def index():
             "http://1.bp.blogspot.com/-qJA7dW3W-M0/VH4l2LQUIEI/AAAAAAAAACo/ZJqeqHgpmBs/s1600/books.png",
             "http://www.shockmansion.com/wp-content/myimages/2013/05/Posted-On-Shock-Mansion1.jpg"]
     recent_posts = db(db.post).select(orderby =~ db.post.date_created)
-    recent_posts = recent_posts[:8]
+    recent_posts = recent_posts[:5]
     name = []
     for r in recent_posts:
         name.append(db.board(db.board.id == db.thread(db.thread.id == r.thread_id).board_id).name)
