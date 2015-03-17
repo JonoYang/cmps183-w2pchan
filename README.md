@@ -18,3 +18,6 @@ subsequent posts in a thread do not have this requirement.
 Users can post text, images, or images and text in combination. 
 Each user's post is in response to a particular thread, or in 
 response to another post. 
+
+## Notes:
+General website layout and style is based off of 4chan.org's safe for work boards.
