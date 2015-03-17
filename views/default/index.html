@@ -6,48 +6,70 @@
                                      -->
 
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
-{{response.title='super alpha web2pychan'}}
+{{response.title='w2pchan'}}
 {{extend 'layout.html'}}
 
-{{if len(boards) > 0:}}
-    {{i = 0}}
-  
-    <!-- iterate thru all the boards, displaying them -->
-    {{for b in boards:}}
-        <a class="board-index-link" href="/w2pchan/board/index/{{=b.id}}">
-            <div class="board-block">
-                <p>{{=b.name}}</p>
-                <img class="board-index-pic" src="{{=pics[i]}}" />
+<div class="landing">
+    <div class="board_list">
+        <h4>Boards:</h4>
+        {{if len(boards) > 0:}}
+            {{i = 0}}
+          
+            <!-- iterate thru all the boards, displaying them -->
+            {{for b in boards:}}
+                <a class="board-index-link" href="/w2pchan/board/index/{{=b.id}}">
+                    <div class="board-block">
+                        <p style="text-align: center;">{{=b.name}}</p>
+                        <img class="board-index-pic" src="{{=pics[i]}}" />
+                    </div>
+                </a>
+                {{i=i+1}}
+            {{pass}}
+
+        {{else:}}
+            <hr>
+            <p style="text-align: center;">
+
+                There are no boards
+
+            </p>
+            <hr>
+        {{pass}}
+    </div>
+    <div class='recent-posts'>
+        <h4>Recent Posts:</h4>
+        {{j = 0}}
+        {{for p in recent_posts:}}
+            {{=name[j]}}:
+            <div style="display: block;">
+                <div style="color: #B7C5D9; float: left;">
+                    >>
+                </div>
+                
+                <div class="post">
+
+                    <p>
+                        {{if p.author == '':}}
+                            Anonymous
+                        {{else:}}
+                            {{=p.author}}
+                        {{pass}}
+                        {{=p.date_created}}
+                        {{=A('View thread', _href = URL('thread', 'index', args = [p.thread_id]))}}
+                    </p>
+
+                    {{if p.image:}}
+                        <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
+                    {{pass}}
+                    
+                    <p class="postbod">
+                        {{=p.body}}
+                    </p>
+
+                </div>
             </div>
-        </a>
-        {{i=i+1}}
-    {{pass}}
-
-{{else:}}
-    <hr>
-    <p style="text-align: center;">
-
-        There are no boards
-
-    </p>
-    <hr>
-{{pass}}
-
-<!--
-{{for p in recent_posts:}}
-  <div class="post">
-    <p>
-      {{if p.author == '':}}
-        Anonymous
-      {{else:}}
-        {{=p.author}}
-      {{pass}}
-      {{=p.date_created}}
-    </p>
-    {{if p.image:}}
-      <img class="showpic" src="{{=URL('default', 'download', args=p.image)}}" width="125" align="left"/>
-    {{pass}}
-    <p class="postbod">{{=p.body}}</p>
-  </div>
-{{pass}}
--->
+        {{j+=1}}
+        {{pass}}
+    </div>
+</div>
+<hr>

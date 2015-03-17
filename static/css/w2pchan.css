@@ -48,16 +48,20 @@ div>p>a {
 }
 
 .board-block {
-  border-style: solid;
-  border-size: 2px;
+  background-color: #D6DAF0;
+  border:1px solid #B7C5D9;
+  border-left: none;
+  border-top: none;
   text-align: center;
   display: inline-block;
+  margin-bottom: 5px;
   height: 200px;
   width: 200px;
 }
 
 .board-index-link {
   color: black;
+  text-decoration: none;
 }
 
 .board-index-pic {
@@ -72,4 +76,22 @@ div>p>a {
 }
 
 .prev-pg {
+}
+
+.landing {
+  width: 100%;
+}
+
+.board_list {
+  width: 70%;
+  float: left;
+}
+
+.recent-posts {
+  margin: 0px auto;
+  text-align: none;
+  height:29%;
+  width: 29%;
+  border-style: none;
+  float: right;
 }
