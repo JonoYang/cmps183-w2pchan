@@ -1,5 +1,5 @@
 # cmps183-w2pchan
-Final project: a futaba channel-like imageboard using web2py
+Final project: a 4chan-like imageboard using web2py
 
 URL: [w2pchan](http://w2pchan.pythonanywhere.com)
 
@@ -20,4 +20,4 @@ Each user's post is in response to a particular thread, or in
 response to another post. 
 
 ## Notes:
-General website layout and style is based off of 4chan.org's safe for work boards.
+General website layout and style is based off of 4chan.org's safe-for-work boards.
