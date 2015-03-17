@@ -1,0 +1,25 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{response.title='Do you want to delete this post?'}}
+{{extend 'layout.html'}}
+
+<div class="post" style="margin-left: auto; margin-right: auto;">
+  <p>
+    <span class="author_name">
+        {{if thread.author == '':}}
+            Anonymous
+        {{else:}}
+            {{=thread.author}}
+        {{pass}}
+    </span>
+    {{=thread.date_created}}
+  </p>
+  {{if thread.image:}}
+    <img class="showpic" src="{{=URL('default', 'download', args=thread.image)}}" width="125" align="left"/>
+  {{pass}}
+  <p class="postbod">{{=thread.body}}</p>
+</div>
+<br>
+
+{{=confirm}}
+{{=A('Cancel', _class='btn', _href=URL('thread', 'index', args=[thread.id]))}}
+

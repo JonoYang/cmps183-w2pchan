@@ -48,9 +48,9 @@ def delete():
         session.flash = 'Not authorized'
         redirect(URL('board', 'index', args = [board_id]))
     else:
-        confirm = FORM.confirm('Are you sure you want to delete this thread?')
+        confirm = FORM.confirm('Delete thread')
         if confirm.accepted:
             db(db.thread.id == thread.id).delete()
             redirect(URL('board', 'index', args = [board_id]))
 
-    return dict(confirm = confirm)
+    return dict(thread = thread, confirm = confirm)
