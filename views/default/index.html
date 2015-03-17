@@ -6,11 +6,12 @@
                                      -->
 
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
-{{response.title='super alpha web2pychan'}}
+{{response.title='w2pchan'}}
 {{extend 'layout.html'}}
 
 <div class="landing">
     <div class="board_list">
+        <h4>Boards:</h4>
         {{if len(boards) > 0:}}
             {{i = 0}}
           
@@ -35,7 +36,7 @@
             <hr>
         {{pass}}
     </div>
-    <div class='recent-posts' style="float: right;">
+    <div class='recent-posts'>
         <h4>Recent Posts:</h4>
         {{j = 0}}
         {{for p in recent_posts:}}

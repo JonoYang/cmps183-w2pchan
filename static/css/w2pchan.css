@@ -75,10 +75,11 @@ div>p>a {
 }
 
 .landing {
-
+  width: 100%;
 }
 
 .board_list {
+  width: 70%;
   float: left;
 }
 
@@ -88,4 +89,5 @@ div>p>a {
   height:30%;
   width: 30%;
   border-style: none;
+  float: right;
 }
